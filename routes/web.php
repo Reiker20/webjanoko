@@ -37,6 +37,7 @@ Route::middleware(['admin'])->name('admin.') ->prefix('admin')->group(function (
     Route::post('/store', [AdminController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [AdminController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [AdminController::class, 'destroy'])->name('destroy');
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard');
     // })->name('dashboard');

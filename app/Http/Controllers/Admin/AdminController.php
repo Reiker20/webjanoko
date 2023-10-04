@@ -94,6 +94,13 @@ class AdminController extends Controller
 
         }
     }
+
+    public function destroy($id)
+    {
+        $menu = Menu::findOrFail($id);
+        $menu->delete();
+        return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
 }
 
 

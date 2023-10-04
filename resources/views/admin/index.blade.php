@@ -44,7 +44,7 @@
                                     <p class="text-gray-700 text-base">{{ $menu->category->name }}</p>
                                     <div class="mt-3 flex justify-between">
                                         <a href="{{route('admin.edit', $menu->id)}}" class="text-blue-500 hover:underline">Edit</a>
-                                        <form action="#" method="POST">
+                                        <form action="{{route('admin.destroy', $menu->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500 hover:underline">Delete</button>
