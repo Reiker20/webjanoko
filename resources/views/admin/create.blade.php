@@ -13,6 +13,15 @@
             </div>
         </div>
     </div>
+{{--    message session error --}}
+    @if(session('error'))
+        <div class="bg-red-500 text-white p-4 rounded-lg mb-6 text-center">
+            {{session('error')}}
+        </div>
+    @endif
+
+
+
 
 {{--    form add menu restaurant--}}
     <div class="py-2">
@@ -20,27 +29,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 {{--                form create--}}
                 <div class="p-6">
-                    <form action="{{route('admin.store')}}" method="POST">
+                    <form action="{{route('admin.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-4">
-                            <label for="gambar" class="sr-only">Gambar</label>
-                            <input type="file" name="gambar" id="gambar"
-                                   placeholder="Gambar Menu"
-                                   class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('gambar') border-red-500 @enderror"
-                                   required
-                                   autocomplete="gambar"
-                                   autofocus
-                            >
-{{--                            preview gambar--}}
-                            <div class="mt-2">
-                                <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
-                                     alt="preview image" style="max-height: 250px;">
-                            </div>
-                            @error('gambar')
-                            <div class="text-red-500 mt-2 text-sm">
-                                {{$message}}
-                            </div>
-                            @enderror
+                        <div class="form-group">
+                            <label class="text-dom-a5" for="image">Image</label>
+                            <input id="image" type="file" class="form-control" name="image"
+                                  onchange="previewImage('ar')">
                         </div>
                         <div class="mb-4">
                             <label for="name" class="sr-only">Name</label>
@@ -59,7 +53,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="harga" class="sr-only">Harga</label>
-                            <input type="text" name="harga" id="harga"
+                            <input type="number" name="price" id="harga"
                                    placeholder="Harga Menu"
                                    class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('harga') border-red-500 @enderror"
                                    required
@@ -75,14 +69,14 @@
 {{--                        category--}}
                         <div class="mb-4">
                             <label for="category" class="sr-only">Category</label>
-                            <select name="category" id="category"
+                            <select name="category_id" id="category"
                                     class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('category') border-red-500 @enderror"
                                     required
                                     autocomplete="category"
                                     autofocus
                             >
-                                <option value="makanan">Makanan</option>
-                                <option value="minuman">Minuman</option>
+                                <option value="1">Makanan</option>
+                                <option value="2">Minuman</option>
                             </select>
                             @error('category')
                             <div class="text-red-500 mt-2 text-sm">
@@ -93,7 +87,7 @@
 {{--                        deskripsi--}}
                         <div class="mb-4">
                             <label for="deskripsi" class="sr-only">Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi"
+                            <textarea name="description" id="deskripsi"
                                       placeholder="Deskripsi Menu"
                                       class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('deskripsi') border-red-500 @enderror"
                                       required
@@ -109,10 +103,8 @@
 {{--                        button submit--}}
                         <div>
                             <button type="submit"
-                                    class="bg-blue-500 text-white px-4 py-3 rounded
-                                    font-medium w-full"
-                            >
-                                Submit
+                                    class="block bg-green-200 text-black p-2 rounded
+                                    font-medium w-full">Submit
                             </button>
                         </div>
                     </form>
