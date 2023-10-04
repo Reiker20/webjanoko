@@ -13,8 +13,9 @@ class AdminController extends Controller
     public function index()
     {
         $menus = Menu::with('category')->get();
+        $users = DB::table('users')->get();
 //        dd($menus);
-        return view('admin.index', compact('menus'));
+        return view('admin.index', compact('menus', 'users'));
     }
 
     public function create()
