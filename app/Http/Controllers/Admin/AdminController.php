@@ -11,7 +11,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $menus = Menu::all();
+        return view('admin.index', compact('menus'));
     }
 
     public function create()
@@ -33,7 +34,8 @@ class AdminController extends Controller
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
-                $file->move('images', $filename);
+                $file->move(public_path('storage/images/'), $filename);
+
 
                 $menu = Menu::create([
                     'name' => $request->name,

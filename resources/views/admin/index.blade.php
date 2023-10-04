@@ -34,6 +34,22 @@
                             </a>
                         </div>
                     </div>
+{{--                    card menu get from database $menus--}}
+                    @foreach($menus as $menu)
+                        <div class="flex flex-wrap">
+                            <div class="w-full md:w-1/2 lg:w-1/3">
+                                <a href="#" class="block hover:bg-gray-300 rounded-lg shadow-lg mb-4 p-6">
+{{--                                    image, name, price, category--}}
+{{--                                    image from directory public/images--}}
+                                    <img src="{{asset('storage/'.$menu->image)}}" alt="menu" class="rounded-lg mb-3">
+                                    <h3 class="text-xl font-bold mb-2">{{$menu->name}}</h3>
+                                    <p class="text-gray-700 text-base">{{$menu->price}}</p>
+                                    <p class="text-gray-700 text-base">{{$menu->category}}</p>
+
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
