@@ -35,6 +35,8 @@ Route::middleware(['admin'])->name('admin.') ->prefix('admin')->group(function (
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::get('/create', [AdminController::class, 'create'])->name('create');
     Route::post('/store', [AdminController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [AdminController::class, 'update'])->name('update');
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard');
     // })->name('dashboard');

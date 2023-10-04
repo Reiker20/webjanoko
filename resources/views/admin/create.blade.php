@@ -19,15 +19,9 @@
             {{session('error')}}
         </div>
     @endif
-
-
-
-
-{{--    form add menu restaurant--}}
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-gray-900">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-{{--                form create--}}
                 <div class="p-6">
                     <form action="{{route('admin.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -66,7 +60,6 @@
                             </div>
                             @enderror
                         </div>
-{{--                        category--}}
                         <div class="mb-4">
                             <label for="category" class="sr-only">Category</label>
                             <select name="category_id" id="category"
@@ -84,7 +77,6 @@
                             </div>
                             @enderror
                         </div>
-{{--                        deskripsi--}}
                         <div class="mb-4">
                             <label for="deskripsi" class="sr-only">Deskripsi</label>
                             <textarea name="description" id="deskripsi"
@@ -100,7 +92,6 @@
                             </div>
                             @enderror
                         </div>
-{{--                        button submit--}}
                         <div>
                             <button type="submit"
                                     class="block bg-green-200 text-black p-2 rounded

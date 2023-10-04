@@ -34,22 +34,28 @@
                             </a>
                         </div>
                     </div>
-{{--                    card menu get from database $menus--}}
-                    @foreach($menus as $menu)
-                        <div class="flex flex-wrap">
-                            <div class="w-full md:w-1/2 lg:w-1/3">
-                                <a href="#" class="block hover:bg-gray-300 rounded-lg shadow-lg mb-4 p-6">
-{{--                                    image, name, price, category--}}
-{{--                                    image from directory public/images--}}
-                                    <img src="{{asset('storage/'.$menu->image)}}" alt="menu" class="rounded-lg mb-3">
-                                    <h3 class="text-xl font-bold mb-2">{{$menu->name}}</h3>
-                                    <p class="text-gray-700 text-base">{{$menu->price}}</p>
-                                    <p class="text-gray-700 text-base">{{$menu->category}}</p>
-
-                                </a>
+                    <div class="flex flex-wrap">
+                        @foreach($menus as $menu)
+                            <div class="w-full md:w-1/2 lg:w-1/3 p-3">
+                                <div class="block hover:bg-gray-300 rounded-lg shadow-lg p-4">
+                                    <img src="{{ asset('storage/'.$menu->image) }}" alt="menu" class="rounded-lg mb-3 w-full h-80 object-cover">
+                                    <h3 class="text-xl font-bold mb-2">{{ $menu->name }}</h3>
+                                    <p class="text-gray-700 text-base">{{ $menu->price }}</p>
+                                    <p class="text-gray-700 text-base">{{ $menu->category->name }}</p>
+                                    <div class="mt-3 flex justify-between">
+                                        <a href="{{route('admin.edit', $menu->id)}}" class="text-blue-500 hover:underline">Edit</a>
+                                        <form action="#" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+
+
                 </div>
             </div>
         </div>
