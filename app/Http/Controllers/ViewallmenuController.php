@@ -10,6 +10,8 @@ class ViewallmenuController extends Controller
     public function viewAllMenus()
     {
         $menus = Menu::paginate(10);
-        return view('admin.viewAllMenus', compact('menus'));
+        return view('admin.viewAllMenus', [
+            "menus" => $menus,
+        ]);
     }
 }
