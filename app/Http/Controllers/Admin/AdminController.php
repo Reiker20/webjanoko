@@ -33,26 +33,27 @@ class AdminController extends Controller
             'description' => 'required',
             'category_id' => 'required',
         ]);
-
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $filename = time() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('storage/images/'), $filename);
-
-
-                $menu = Menu::create([
-                    'name' => $request->name,
-                    'price' => $request->price,
-                    'image' => 'images/' . $filename, // Store the image path, not $request->image
-                    'description' => $request->description,
-                    'category_id' => $request->category_id,
-                ]);
-
-                if ($menu) {
-                    return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
-                }
+    
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/images/'), $filename);
+    
+            $menu = Menu::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'image' => '/storage/images/' . $filename, // Updated image path
+                'description' => $request->description,
+                'category_id' => $request->category_id,
+            ]);
+    
+            if ($menu) {
+                return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
             }
+        }
     }
+    
+    
 
     public function edit($id)
     {
