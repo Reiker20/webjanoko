@@ -24,7 +24,7 @@
                             <!-- <th scope="col">Actions</th> -->
                         </tr>
                         
-                        @foreach ($menus as $menus)
+                        @foreach ($menus as $menu)
                         <tr>
                             <td>{{ $menus->name }}</td>
                             <td>{{ $menus->price }}</td>

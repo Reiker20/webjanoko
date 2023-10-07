@@ -35,11 +35,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['admin'])->name('admin.') ->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::get('/create', [AdminController::class, 'create'])->name('create');
+    
     Route::post('/store', [AdminController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [AdminController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [AdminController::class, 'destroy'])->name('destroy');
-    Route::get('/admin/view-all-menus', [AdminController::class, 'viewAllMenus'])->name('viewAllMenus');
+    Route::get('/view-all-menus', [AdminController::class, 'viewAllMenus'])->name('viewAllMenus');
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard');
     // })->name('dashboard');
