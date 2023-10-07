@@ -18,6 +18,14 @@ class Menu extends Model
     ];
 
     public function category()
+        'name', 
+        'price', 
+        'image', 
+        'description',
+        'category_id'
+    ];
+
+    public function category() 
     {
         return $this->belongsTo(Category::class);
     }
