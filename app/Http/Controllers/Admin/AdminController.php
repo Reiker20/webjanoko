@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,8 @@ class AdminController extends Controller
         $menus = Menu::with('category')->get();
         $users = DB::table('users')->get();
 //        dd($menus);
-        return view('admin.index', compact('menus', 'users'));
+        return view('admin.index',  compact('menus', 'users'));
+        return view('dashboard', compact('menus'));
     }
 
     public function create()
@@ -50,6 +52,7 @@ class AdminController extends Controller
             if ($menu) {
                 return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
             }
+
         }
     }
     
@@ -101,6 +104,10 @@ class AdminController extends Controller
     {
         $menu = Menu::findOrFail($id);
         $menu->delete();
+        return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Dihapus!']);
+
+        $user = User::findOrFail($id);
+        $user->delete();
         return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
