@@ -17,13 +17,13 @@ class Menu extends Model
         'category_id',
     ];
 
-    public function category()
-        'name', 
-        'price', 
-        'image', 
-        'description',
-        'category_id'
-    ];
+    // public function category()
+    //     'name', 
+    //     'price', 
+    //     'image', 
+    //     'description',
+    //     'category_id'
+    // ];
 
     public function category() 
     {

@@ -9,19 +9,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __('Add menu to list') }}
-                    {{ __("Add menu to list") }}
+                    {{ __('Add menu to list') }}
                 </div>
             </div>
         </div>
     </div>
-    {{--    message session error --}}
     @if (session('error'))
         <div class="bg-red-500 text-white p-4 rounded-lg mb-6 text-center">
             {{ session('error') }}
-{{--    message session error --}}
-    @if(session('error'))
-        <div class="bg-red-500 text-white p-4 rounded-lg mb-6 text-center">
-            {{session('error')}}
         </div>
     @endif
     <div class="py-2">
@@ -29,8 +24,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
-                    <form action="{{route('admin.store')}}" method="POST" enctype="multipart/form-data">
-
                         @csrf
                         <div class="form-group">
                             <label class="text-dom-a5" for="image">Image</label>
@@ -46,21 +39,6 @@
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
                                 </div>
-                                  onchange="previewImage('ar')">
-                        </div>
-                        <div class="mb-4">
-                            <label for="name" class="sr-only">Name</label>
-                            <input type="text" name="name" id="name"
-                                   placeholder="Nama Menu"
-                                   class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror"
-                                   required
-                                   autocomplete="name"
-                                   autofocus
-                            >
-                            @error('name')
-                            <div class="text-red-500 mt-2 text-sm">
-                                {{$message}}
-                            </div>
                             @enderror
                         </div>
                         <div class="mb-4">
@@ -72,18 +50,6 @@
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
                                 </div>
-
-                            <input type="number" name="price" id="harga"
-                                   placeholder="Harga Menu"
-                                   class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('harga') border-red-500 @enderror"
-                                   required
-                                   autocomplete="harga"
-                                   autofocus
-                            >
-                            @error('harga')
-                            <div class="text-red-500 mt-2 text-sm">
-                                {{$message}}
-                            </div>
                             @enderror
                         </div>
                         <div class="mb-4">
@@ -91,11 +57,6 @@
                             <select name="category_id" id="category"
                                 class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('category') border-red-500 @enderror"
                                 required autocomplete="category" autofocus>
-                                    class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('category') border-red-500 @enderror"
-                                    required
-                                    autocomplete="category"
-                                    autofocus
-                            >
                                 <option value="1">Makanan</option>
                                 <option value="2">Minuman</option>
                             </select>
@@ -103,9 +64,6 @@
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
                                 </div>
-                            <div class="text-red-500 mt-2 text-sm">
-                                {{$message}}
-                            </div>
                             @enderror
                         </div>
                         <div class="mb-4">
@@ -117,29 +75,16 @@
                                 <div class="text-red-500 mt-2 text-sm">
                                     {{ $message }}
                                 </div>
-                            <textarea name="description" id="deskripsi"
-                                      placeholder="Deskripsi Menu"
-                                      class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('deskripsi') border-red-500 @enderror"
-                                      required
-                                      autocomplete="deskripsi"
-                                      autofocus
-                            ></textarea>
-                            @error('deskripsi')
-                            <div class="text-red-500 mt-2 text-sm">
-                                {{$message}}
-                            </div>
                             @enderror
                         </div>
                         <div>
-                            <button type="submit"
-                                class="block bg-green-200 text-black p-2 rounded
-                                    class="block bg-green-200 text-black p-2 rounded
-                                    font-medium w-full">Submit
+                            <button type="submit" class="block bg-green-200 text-black p-2 rounded font-medium w-full">
+                                Submit
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-</x-admin-layout>
+    </div>
 </x-admin-layout>
