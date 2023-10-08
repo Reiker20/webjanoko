@@ -17,7 +17,6 @@ class AdminController extends Controller
         $users = DB::table('users')->get();
 //        dd($menus);
         return view('admin.index',  compact('menus', 'users'));
-        return view('dashboard', compact('menus'));
     }
 
     public function create()
